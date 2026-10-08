@@ -1,17 +1,21 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using TaskFlow.Data;
+using TaskFlow.Models;
 
 namespace TaskFlow.Controllers
 {
 
     [ApiController]
     [Route("api/[controller]")]
-    public class HealthController: ControllerBase
+    public class TasksController : ControllerBase
     {
+        
+
         [HttpGet]
-        public IActionResult GetHealth()
+        public ActionResult<IEnumerable<TodoItem>> GetAllTasks()
         {
-            return Ok(new { status = "Healthy" });
+          
+            return Ok(InMemoryDB.taskFlows);
         }
     }
 }
